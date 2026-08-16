@@ -8,9 +8,10 @@ Estúdio web de criação musical com IA, reconstruído a partir das especifica�
 - Estilos Trap, Pop, EDM e RnB
 - Idiomas Português, Inglês e Espanhol
 - Clima/mood e energia
-- Geração simulada de letra e metadados musicais
-- Separadores Letra/Cifras preparados
-- Guardar música na biblioteca (estado local do protótipo)
+- **Geração real de letras e acordes através da OpenAI Responses API**
+- Saída estruturada com título, tonalidade, BPM, secções, letra e cifras
+- Separadores Letra/Cifras
+- Guardar músicas localmente no navegador
 - Área de stems com estado Em Breve
 - Layout responsivo
 
@@ -21,10 +22,18 @@ npm install
 npm run dev
 ```
 
+## Configuração da IA
+
+A chave da OpenAI **não deve ser colocada no frontend**. O endpoint `api/generate.js` lê `OPENAI_API_KEY` do ambiente do servidor/deploy.
+
+Opcionalmente, pode definir `OPENAI_MODEL` para escolher outro modelo compatível.
+
+Em produção, configure estas variáveis no serviço de hospedagem. O projeto está preparado para uma função serverless em `/api/generate`.
+
 ## Próximas etapas
 
-1. Ligar geração real de letras/acordes a um provedor de IA.
-2. Criar autenticação e base de dados.
-3. Persistir a biblioteca por utilizador.
+1. Criar autenticação e base de dados.
+2. Persistir a biblioteca por utilizador.
+3. Adicionar edição de letra e progressão de acordes.
 4. Implementar geração/edição de áudio e stems.
-5. Adicionar testes E2E e publicação.
+5. Adicionar testes E2E com Playwright e publicação.
