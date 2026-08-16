@@ -1,0 +1,74 @@
+{
+  "app_concept": "AI Music Creation Studio (DAW-style SaaS)",
+  "target_audience": "Music creators, producers, vocalists",
+  "theme": "dark",
+  "language": "Portuguese (as requested by user)",
+  "typography": {
+    "primary_heading": "Unbounded, sans-serif",
+    "secondary_body": "Manrope, sans-serif",
+    "import_link": "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;600;800;900&display=swap');",
+    "hierarchy": {
+      "h1": "text-5xl md:text-6xl tracking-tighter font-black",
+      "h2": "text-3xl md:text-4xl tracking-tight font-bold",
+      "h3": "text-xl md:text-2xl font-semibold",
+      "body": "text-base leading-relaxed text-slate-300",
+      "labels": "text-xs tracking-[0.2em] uppercase font-bold text-slate-400"
+    }
+  },
+  "colors": {
+    "archetype": "Electric & Neon (Audio Reactive / Night Studio)",
+    "background_app": "bg-slate-950",
+    "surface_cards": "bg-slate-900/40",
+    "surface_glass": "bg-slate-900/60 backdrop-blur-xl",
+    "primary_accent": "cyan-500",
+    "secondary_accent": "pink-500",
+    "text_main": "text-white",
+    "text_muted": "text-slate-400",
+    "border_subtle": "border-slate-800",
+    "genre_colors": {
+      "Trap": "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+      "Pop": "text-pink-400 bg-pink-500/10 border-pink-500/20",
+      "EDM": "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
+      "RnB": "text-amber-400 bg-amber-500/10 border-amber-500/20"
+    }
+  },
+  "layouts": {
+    "global_app_layout": "Sidebar navigation (left) + Main Content Area (right) typical of DAWs and Creative SaaS.",
+    "song_studio": "Bento Grid layout. Left column for inputs (Genre, Language, Mood), right large column for AI generated output (Lyrics and Chords).",
+    "generated_song_view": "Split pane: 60% Lyrics with section highlights (Verse, Chorus) and 40% Chords sheet.",
+    "spacing": "Generous spacing. Use p-6, p-8 on cards. Keep inputs breathing."
+  },
+  "visual_enhancers": {
+    "glassmorphism": "Use backdrop-blur-xl on the sticky header and floating player/audio placeholder controls.",
+    "tracing_beam": "Apply a subtle glowing border to the 'Generate Song' button and the active AI generation area.",
+    "textures": "Add a very subtle noise overlay to the dark background to prevent it from looking completely flat."
+  },
+  "components": {
+    "forms_inputs": "Use Shadcn Input, Select, Slider (for energy/tempo), Textarea. Do NOT use native HTML inputs.",
+    "tabs": "Use Shadcn Tabs to switch between 'Letra' (Lyrics) and 'Cifras' (Chords).",
+    "buttons": "Pill-shaped, using primary accent color with hover lift (-translate-y-1) and subtle shadow-lg.",
+    "audio_stems_placeholder": "CRITICAL: Create a visually striking 'Em Breve' (Coming Soon) section at the bottom. It should look like 4 DAW tracks (Vocals, Drums, Bass, Melody) but with a blur effect, a lock icon, and a glass overlay saying 'Geração de Áudio e Stems em Breve'."
+  },
+  "motion_interactions": {
+    "streaming_text": "When AI is generating lyrics, use a typewriter or sequential fade-in effect to simulate streaming.",
+    "hover_states": "All buttons and song cards MUST have hover states. Song cards in Library should slightly scale up or show a 'Play' overlay on hover.",
+    "toasts": "Use Sonner for success/error states (e.g., 'Música salva na biblioteca')."
+  },
+  "instructions_to_main_agent": [
+    "Build the application texts primarily in Portuguese as the user explicitly asked: 'Quero uma IA especifico só para criar Músicas'.",
+    "Implement the UI as a modern, dark-themed SaaS dashboard suitable for music producers.",
+    "In the Song Studio, provide clear dropdowns for Estilos (Trap, Pop, EDM, RnB) and Idiomas (Português, Inglês, Espanhol).",
+    "For the lyrics section, format the output to clearly show structures like [Verso 1], [Refrão], [Ponte].",
+    "Ensure the 'Audio/Stems' feature is highly visible but clearly marked as a placeholder/upcoming feature with locked tracks.",
+    "Include a My Library (Minha Biblioteca) view that lists saved songs in a grid layout."
+  ],
+  "universal_guidelines": [
+    "Use Lucide React for icons.",
+    "All interactive and key informational elements MUST include a data-testid attribute for testing.",
+    "DO NOT apply universal transitions (e.g., 'transition: all'). Target specific properties.",
+    "Avoid generic centered layouts for the main app. Align left for reading, use grids for structure.",
+    "Do NOT use complete transparent backgrounds for dropdowns, modals, or fixed headers. Always use solid or glassmorphism (bg-slate-900/80 backdrop-blur).",
+    "Ensure hover states and focus rings are distinct and accessible.",
+    "Install and use 'sonner' for toast notifications."
+  ]
+}
