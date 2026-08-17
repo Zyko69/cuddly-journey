@@ -37,3 +37,4 @@ Em produção, configure estas variáveis no serviço de hospedagem. O projeto e
 3. Adicionar edição de letra e progressão de acordes.
 4. Implementar geração/edição de áudio e stems.
 5. Adicionar testes E2E com Playwright e publicação.
+6. MusicAI deployment sync
