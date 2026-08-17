@@ -27,9 +27,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Método não permitido." });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OPENROUTER_API_KEY) {
     return res.status(500).json({
-      error: "A IA ainda não está configurada. Adicione OPENAI_API_KEY nas variáveis de ambiente do deploy."
+      error: "A IA ainda não está configurada. Adicione OPENROUTER_API_KEY nas variáveis de ambiente do deploy."
     });
   }
 
@@ -56,19 +56,20 @@ Regras:
 - Mantém a letra natural e cantável no idioma pedido.
 - Devolve apenas os dados no formato estruturado solicitado.`;
 
-    const response = await fetch("https://api.openai.com/v1/responses", {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        "HTTP-Referer": "https://cuddly-journey-k2b7gff3i-acm-c82e.vercel.app/",
+        "X-Title": "MusicAI Studio"
       },
       body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || "gpt-5.6",
-        input: prompt,
-        store: false,
-        text: {
-          format: {
-            type: "json_schema",
+        model: "openrouter/free",
+        messages: [{ role: "user", content: prompt }],
+        response_format: {
+          type: "json_schema",
+          json_schema: {
             name: "music_song",
             strict: true,
             schema
@@ -79,11 +80,11 @@ Regras:
 
     const data = await response.json();
     if (!response.ok) {
-      console.error("OpenAI error", data);
+      console.error("OpenRouter error", data);
       return res.status(response.status).json({ error: "Não foi possível gerar a música agora." });
     }
 
-    const text = data.output_text;
+    const text = data.choices?.[0]?.message?.content;
     if (!text) {
       return res.status(502).json({ error: "A IA não devolveu conteúdo." });
     }
