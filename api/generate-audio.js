@@ -43,7 +43,7 @@ export default async function handler(req, res) {
           'professional modern production'
         ].filter(Boolean),
         negative_styles: ['spoken word', 'a cappella'],
-        context_adherence: 0.85
+        context_adherence: 'high'
       };
     });
 
